@@ -19,11 +19,12 @@ function validateForm(e) {
     validateEmail() &&
     validatePassword()
   ) {
-    var _newUser = getUserName();
+    var _newUser = {username: getUserName(), email: getEmail(), pass: getPassword()};
     // add code to update registeredUsers array with new user and call render function
     // TODO
     registeredUsers.push(_newUser);
     renderRegisteredUsers();
+
     if (registeredUsers.length > 4) {
       registeredUsers.shift(_newUser);
     }
@@ -36,7 +37,9 @@ function renderRegisteredUsers() {
   document.getElementById("registered-users").innerHTML = " ";
   registeredUsers.forEach(function(registeredUser) {
     var _newUser = document.createElement("li");
-    _newUser.innerHTML = registeredUser;
+    _newUser.innerHTML = registeredUser.username;
+    // _newUser.innerHTML = registeredUser.username + " " + registeredUser.email + " " + registeredUser.pass;
+    // _newUser.innerHTML = `${registeredUser.username}, ${registeredUser.email}, ${registeredUser.pass}`
     document.getElementById("registered-users").appendChild(_newUser);
   });
 }
@@ -111,14 +114,14 @@ function validatePassword() {
   var _password = getPassword();
   var _confirmPassword = getConfirmPassword();
 
-  if (_password.search[/[A-Z]/i] < 1) {
+  if (_password.search(/[A-Z]/) < 0) {
     return false;
   }
-  if (_password.search[/[0-9]/] < 1) {
+  if (_password.search(/[0-9]/) < 0) {
     return false;
   }
 
-  if (_password.length > 8) {
+  if (_password.length < 8) {
     return false;
   }
   if (_password !== _confirmPassword) {
