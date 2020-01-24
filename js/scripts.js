@@ -19,7 +19,11 @@ function validateForm(e) {
     validateEmail() &&
     validatePassword()
   ) {
-    var _newUser = {username: getUserName(), email: getEmail(), pass: getPassword()};
+    var _newUser = {
+      username: getUserName(),
+      email: getEmail(),
+      pass: getPassword()
+    };
     // add code to update registeredUsers array with new user and call render function
     // TODO
     registeredUsers.push(_newUser);
@@ -37,8 +41,13 @@ function renderRegisteredUsers() {
   document.getElementById("registered-users").innerHTML = " ";
   registeredUsers.forEach(function(registeredUser) {
     var _newUser = document.createElement("li");
-    _newUser.innerHTML = registeredUser.username;
-    // _newUser.innerHTML = registeredUser.username + " " + registeredUser.email + " " + registeredUser.pass;
+    //_newUser.innerHTML = registeredUser.username;
+    _newUser.innerHTML =
+      registeredUser.username +
+      " " +
+      registeredUser.email +
+      " " +
+      registeredUser.pass;
     // _newUser.innerHTML = `${registeredUser.username}, ${registeredUser.email}, ${registeredUser.pass}`
     document.getElementById("registered-users").appendChild(_newUser);
   });
