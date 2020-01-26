@@ -11,9 +11,15 @@ function calculate(order) {
     result = multiply(firstInput, secondInput);
   } else if (order === "divide") {
     result = divide(firstInput, secondInput);
-  } //else if (order === "powFunction()") {
-  //result = Math.pow(firstInput, secondInput);
-
+  } else if (order === "pow") {
+    result = Math.pow(firstInput, secondInput);
+  } else if (order === "sqrt") {
+    if (firstInput) {
+      result = Math.sqrt(firstInput);
+    } else if (secondInput) {
+      result = Math.sqrt(secondInput);
+    } else result = "Please give a number!!!!!";
+  }
   document.getElementById("final-result").innerText = result;
 }
 
