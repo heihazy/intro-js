@@ -6,11 +6,10 @@
 
   // Set event listeners
   function setEventListeners() {
-    var next = document.getElementsByClassName("slider__button--next")[0],
-      prev = document.getElementsByClassName("slider__button--prev")[0];
-
-    next.addEventListener("click", getNext);
-    prev.addEventListener("click", getPrev);
+    var next = $(".slider__button--next")[0],
+      prev = $(".slider__button--prev")[0];
+    $(next).on("click", getNext);
+    $(prev).on("click", getPrev);
   }
 
   function getNext() {
@@ -20,12 +19,16 @@
     //}
     //slide++;
     //items[slide].classList.add("active");
-    items[slide].classList.remove("active");
+    $(".slider__photo")
+      .eq(slide)
+      .removeClass("active");
     if (slide === totalItems - 1) {
       slide = 0;
       //slide = slide === totalItems - 1 ? 0 : slide++;
     } else slide++;
-    items[slide].classList.add("active");
+    $(".slider__photo")
+      .eq(slide)
+      .addClass("active");
   }
 
   function getPrev() {
@@ -35,11 +38,15 @@
     //}
     //slide--;
     //items[slide].classList.add("active");
-    items[slide].classList.remove("active");
+    $(".slider__photo")
+      .eq(slide)
+      .removeClass("active");
     if (slide === 0) {
       slide = totalItems - 1;
     } else slide--;
-    items[slide].classList.add("active");
+    $(".slider__photo")
+      .eq(slide)
+      .addClass("active");
   }
 
   function initSlider() {
