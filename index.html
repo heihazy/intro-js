@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>HPlus Sport</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<a id="button"></a>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <header id="home" class="header">
+  <div class="print"></div>
   <nav class="nav" role="navigation">
     <div class="container nav-elements">
       <div class="branding">
@@ -139,10 +143,10 @@
       <div class="person-card">
         <img src="images/employees/HenryTwill.jpg" alt="HenryTwill Photo">
         <div class="card-info">
-          <h3 class="card-name">Henry Twill, Jr</h3>
-          <h4 class="card-title">CEO</h4>
+          <h3 class="card-name" id="firstWord">Henry Twill, Jr</h3>
+          <h4 class="card-title" id="firstWord">CEO</h4>
         </div>
-        <p class="card-text">Henry Twill Jr. is the <em>founder</em> and CEO of H+ Sports. Previously he was an <em>athletic trainer</em> working with several top athletes, making sure that they had the direction and proper coaching to keep them at the <em>top of their game</em>. Henry’s passion for finding natural alternatives led him to developing H+ Sport Multivitamins. The supplements <em>became a success</em> with his clients and led to the creation of H+ Sports.</p>
+        <p class="card-text" id="firstWord">Henry Twill Jr. is the <em>founder</em> and CEO of H+ Sports. Previously he was an <em>athletic trainer</em> working with several top athletes, making sure that they had the direction and proper coaching to keep them at the <em>top of their game</em>. Henry’s passion for finding natural alternatives led him to developing H+ Sport Multivitamins. The supplements <em>became a success</em> with his clients and led to the creation of H+ Sports.</p>
       </div><!-- person-card -->
 
       <div class="person-card">
@@ -215,6 +219,35 @@
   <p class="legal">H+ Sport is a fictitious brand created by lynda.com solely for the purpose of training. All products and people associated with H+ Sport are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
 </div><!-- container -->
 </footer><!-- footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  jQuery(document).ready(function(){
+    var btn = $('#button');
+    $(window).scroll(function(){
+      if ($(window).scrollTop()>300) {
+        btn.addClass('show');
+        } else {
+          btn.removeClass('show');
+        }
+    });
+    btn.on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:0}, '300');
+    });
 
+    $('[src = "images/hpluslogo.svg"]').fadeTo('2000', 0.1).fadeTo('2000', 1).fadeTo('2000', 0.1).fadeTo('2000', 1);
+    $('[data-type = "mineralwater"]').css('background-color', 'green');
+    $('[data-type = "proteinbar"]').css('background-color', 'blue');
+    $('<a href = "javascript:window.print()">print</a>').appendTo('.print').css('font-size', '25px');
+    
+    $.fn.firstWord = function() {
+  var text = this.text().trim().split(" ");
+  var first = text.shift();
+  this.html((text.length > 0 ? "<span class='firstWord'>"+ first + "</span> " : first) + text.join(" "));
+};
+    $("#firstWord").firstWord();
+    
+  });
+</script>
 </body>
 </html>
