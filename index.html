@@ -143,10 +143,10 @@
       <div class="person-card">
         <img src="images/employees/HenryTwill.jpg" alt="HenryTwill Photo">
         <div class="card-info">
-          <h3 class="card-name" id="firstWord">Henry Twill, Jr</h3>
-          <h4 class="card-title" id="firstWord">CEO</h4>
+          <h3 class="card-name">Henry Twill, Jr</h3>
+          <h4 class="card-title">CEO</h4>
         </div>
-        <p class="card-text" id="firstWord">Henry Twill Jr. is the <em>founder</em> and CEO of H+ Sports. Previously he was an <em>athletic trainer</em> working with several top athletes, making sure that they had the direction and proper coaching to keep them at the <em>top of their game</em>. Henry’s passion for finding natural alternatives led him to developing H+ Sport Multivitamins. The supplements <em>became a success</em> with his clients and led to the creation of H+ Sports.</p>
+        <p class="card-text">Henry Twill Jr. is the <em>founder</em> and CEO of H+ Sports. Previously he was an <em>athletic trainer</em> working with several top athletes, making sure that they had the direction and proper coaching to keep them at the <em>top of their game</em>. Henry’s passion for finding natural alternatives led him to developing H+ Sport Multivitamins. The supplements <em>became a success</em> with his clients and led to the creation of H+ Sports.</p>
       </div><!-- person-card -->
 
       <div class="person-card">
@@ -240,14 +240,17 @@
     $('[data-type = "proteinbar"]').css('background-color', 'blue');
     $('<a href = "javascript:window.print()">print</a>').appendTo('.print').css('font-size', '25px');
     
-    $.fn.firstWord = function() {
-  var text = this.text().trim().split(" ");
-  var first = text.shift();
-  this.html((text.length > 0 ? "<span class='firstWord'>"+ first + "</span> " : first) + text.join(" "));
-};
-    $("#firstWord").firstWord();
     
-  });
+    // var words = $('.card-text');
+    // [...words].forEach(element => {
+    //   console.log(element.innerHTML.split(' ')[0]);
+    // });
+    $(".card-text").html(function(){
+      var text= $(this).text().split(" ");
+      var first = text.shift();
+    return ("<b>"+ first + "</b> ") + text.join(" ");
+    });
+});
 </script>
 </body>
 </html>
