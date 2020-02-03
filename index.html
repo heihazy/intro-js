@@ -240,11 +240,7 @@
     $('[data-type = "proteinbar"]').css('background-color', 'blue');
     $('<a href = "javascript:window.print()">print</a>').appendTo('.print').css('font-size', '25px');
     
-    
-    // var words = $('.card-text');
-    // [...words].forEach(element => {
-    //   console.log(element.innerHTML.split(' ')[0]);
-    // });
+
     $(".card-text").html(function(){
       var text= $(this).text().split(" ");
       var first = text.shift();
