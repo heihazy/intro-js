@@ -84,9 +84,8 @@
           $("#theDiv2").animate({ right, fontSize: "200px" });
         });
 
-        $("#all").click(moveRight);
         $("#all")
-          .finish("moveRight")
+          .click(moveRight)
           .oncomplete();
       });
 
