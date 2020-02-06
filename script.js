@@ -44,4 +44,24 @@ jQuery(document).ready(function() {
   //change nav bar and headline to Personnel
   $(".navbar li a:contains(people)").text("Personnel");
   $(".headline:contains(People)").text("Personnel");
+
+  $.ajax({
+    url:
+      "//api.openweathermap.org/data/2.5/weather?q=helsinki&APPID=de522ae9a9b9605f121481e56d7f1869&units=metric"
+  }).done(function(resp) {
+    console.log(resp);
+    $("#weather-button").text(
+      "Helsinki" +
+        " " +
+        "today is" +
+        " " +
+        resp.main.temp +
+        " " +
+        "degree celcius" +
+        " " +
+        "and it feels like" +
+        " " +
+        resp.main.feels_like
+    );
+  });
 });
