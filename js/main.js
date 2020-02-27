@@ -1,54 +1,31 @@
 (function($) {
+  //close popup
   function closePopup() {
-    $("#popup1").css("visibility", "hidden");
+    $(".overlay").css("visibility", "hidden");
   }
-
-  function validateEmail() {
-    var _email = getEmail();
-
-    // if (checkSpace(_email) === true) {
-    //   return false;
-    // }
-
-    // check for @
-    var atSymbol = _email.indexOf("@");
-    if (atSymbol < 1) {
-      return false;
-    }
-
-    // check if there is a dot located less than 2 symbols away from the @ sign
-    var dot = _email.indexOf(".");
-    if (dot <= atSymbol + 2) {
-      return false;
-    }
-
-    // check that the dot is not at the end
-    if (dot === _email.length - 1) {
-      return false;
-    }
-
-    return true;
-  }
-
-  function getEmail() {
-    if (typeof $("#subscribe_pemail").val() === "undefined") {
-      // TODO
-      return "";
-    } else {
-      return $("#subscribe_pemail").val();
-    }
-  }
-
+  //Call function to check valid email and show popup2
   function email_subscribepopup() {
-    $("#popup1").css("visibility", "hidden");
-    $("#popup2").css("visibility", "visible");
+    var email = document.getElementById("subscribe_pemail").value;
+    validateEmail(email);
+    if (validateEmail(email) === true) {
+      $("#popup1").css("visibility", "hidden");
+      $("#popup2").css("visibility", "visible");
+    } else {
+      alert("Please check your email again!");
+    }
   }
+  //check if the email is valid (test with validate email in own validation branch to see if it works)
+  function validateEmail(email) {
+    var re = /^(?!.*(?:''|\.\.))\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
+  }
+
+  //the exercise events
   $(document).ready(function() {
     $("body").mouseleave(function() {
       $("#popup1").css("visibility", "visible");
     });
     $(".close").click(closePopup);
-    $(".button").click(validateEmail);
     $(".button").click(email_subscribepopup);
   });
 
