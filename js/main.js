@@ -1,6 +1,12 @@
 (function($) {
-  $("body").mouseleave(function() {
-    $("#popup1").css("display", "block");
+  function closePopup() {
+    $("#popup1").css("visibility", "hidden");
+  }
+  $(document).ready(function() {
+    $("body").mouseleave(function() {
+      $("#popup1").css("visibility", "visible");
+    });
+    $(".close").click(closePopup);
   });
 
   ("use strict");
