@@ -1566,7 +1566,7 @@ main {
   height: 40px;
   width: 40px;
   line-height: 45px;
-  visibility: visible;
+  visibility: hidden;
 }
 
 .popup .close:hover {
