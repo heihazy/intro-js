@@ -2,11 +2,54 @@
   function closePopup() {
     $("#popup1").css("visibility", "hidden");
   }
+
+  function validateEmail() {
+    var _email = getEmail();
+
+    // if (checkSpace(_email) === true) {
+    //   return false;
+    // }
+
+    // check for @
+    var atSymbol = _email.indexOf("@");
+    if (atSymbol < 1) {
+      return false;
+    }
+
+    // check if there is a dot located less than 2 symbols away from the @ sign
+    var dot = _email.indexOf(".");
+    if (dot <= atSymbol + 2) {
+      return false;
+    }
+
+    // check that the dot is not at the end
+    if (dot === _email.length - 1) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function getEmail() {
+    if (typeof $("#subscribe_pemail").val() === "undefined") {
+      // TODO
+      return "";
+    } else {
+      return $("#subscribe_pemail").val();
+    }
+  }
+
+  function email_subscribepopup() {
+    $("#popup1").css("visibility", "hidden");
+    $("#popup2").css("visibility", "visible");
+  }
   $(document).ready(function() {
     $("body").mouseleave(function() {
       $("#popup1").css("visibility", "visible");
     });
     $(".close").click(closePopup);
+    $(".button").click(validateEmail);
+    $(".button").click(email_subscribepopup);
   });
 
   ("use strict");
