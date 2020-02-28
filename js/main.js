@@ -27,6 +27,17 @@
     });
     $(".close").click(closePopup);
     $(".button").click(email_subscribepopup);
+    $(".openPopup3").click(function() {
+      $("#popup3").css("visibility", "visible");
+    });
+    $("#popup3 .popup").on("scroll", function() {
+      if (
+        $("#popup3 .popup").scrollTop() + $("#popup3 .popup").height() >=
+        $("#popup3 #dialog").height()
+      ) {
+        $("#popup3 .close").css("visibility", "visible");
+      }
+    });
   });
 
   ("use strict");

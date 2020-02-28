@@ -1569,6 +1569,12 @@ main {
   visibility: hidden;
 }
 
+.openPopup3 {
+  width: 200px;
+  height: 200px;
+  background-color: chocolate;
+  margin-left: 200px;
+}
 .popup .close:hover {
   color: #06d85f;
 }
